@@ -1,37 +1,41 @@
-# 🧩 Jumbled Frames Reconstruction Challenge
+🧩 Jumbled Frames Reconstruction Challenge
+🎯 Objective
 
-## 🎯 Objective
-Reconstruct the original 5-second, 1080p, 60 FPS video from a shuffled version (`jumbled_video.mp4`) by restoring the correct frame order using feature-based similarity analysis.
+Reconstruct the original 5-second, 1080p, 60 FPS video from a shuffled version (jumbled_video.mp4) by restoring the correct frame order using feature-based similarity analysis.
 
----
+⚙️ Dependencies
 
-## ⚙️ Dependencies
-This notebook automatically installs all required dependencies.
+This notebook automatically installs all required dependencies:
 
-Algorithm Overview
+opencv-python-headless
+
+torch, torchvision
+
+scikit-learn
+
+tqdm
+
+gdown
+
+🧠 Algorithm Overview
 
 The reconstruction process is based on frame similarity using deep features extracted from a pretrained ResNet-50 model.
 
 Steps:
 
-Frame Extraction:
-All frames are decoded and stored in memory.
+Frame Extraction – All frames are decoded and stored in memory.
 
-Feature Extraction:
-Each frame is passed through a pretrained CNN (ResNet-50) to extract 2048-dimensional embeddings.
+Feature Extraction – Each frame is passed through a pretrained CNN (ResNet-50) to extract 2048-dimensional embeddings.
 
-Similarity Matrix Computation:
-Cosine similarity is computed between all frame features using GPU acceleration.
+Similarity Matrix Computation – Cosine similarity is computed between all frame features using GPU acceleration.
 
-Greedy Path Construction:
-Frames are ordered by iteratively selecting the most similar next frame.
+Greedy Path Construction – Frames are ordered by iteratively selecting the most similar next frame.
 
-2-opt Local Optimization:
-A limited 2-opt heuristic is applied to improve global sequence ordering based on similarity gain.
+2-opt Local Optimization – A limited 2-opt heuristic refines the frame order for global improvement.
 
-Video Reconstruction:
-Frames are written sequentially to produce the final output reconstructed.mp4.
-How to Run
+Video Reconstruction – Frames are written sequentially to produce the final output reconstructed.mp4.
+
+🚀 How to Run
 
 Open the notebook in Google Colab.
 
@@ -65,7 +69,7 @@ Greedy path construction
 
 Video writing
 
-Total time
+Total execution time
 
 📦 Output
 
@@ -79,8 +83,8 @@ GPU-accelerated deep feature extraction (ResNet-50)
 
 Cosine similarity matrix computed on GPU
 
-Greedy + 2-opt optimization for ordering
+Greedy + 2-opt optimization for frame ordering
 
-Batched processing for efficient memory use
+Batched feature extraction for memory efficiency
 
-Complete in-memory pipeline with detailed runtime logs
+Fully in-memory reconstruction pipeline with detailed runtime logs
